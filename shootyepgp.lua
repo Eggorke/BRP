@@ -755,13 +755,24 @@ function sepgp:addonMessage(message,channel,sender)
   SendAddonMessage(self.VARS.prefix,message,channel,sender)
 end
 
-function sepgp:addonComms(prefix,message,channel,sender)
+function sepgp:addonComms(pref,message,channel,sender)
   -- fix pallypower
-  -- if prefix:upper():match("^PLPWR$") then return end
-  -- if message:find("ASELF", 1, true) then return end
+  local ok, err = pcall(function()
+    if type(pref) == "string" and pref:upper():match("^PLPWR$") then
+      return
+    end
+    if type(message) == "string" and message:find("ASELF", 1, true) then
+      return
+    end
+  end)
+
+  if not ok then
+    return
+  end
 
 
-  if not prefix == self.VARS.prefix then return end -- we don't care for messages from other addons
+
+  if not pref == self.VARS.prefix then return end -- we don't care for messages from other addons
   if sender == self._playerName then return end -- we don't care for messages from ourselves
   local name_g,class,rank = self:verifyGuildMember(sender,true)
   if not (name_g) then return end -- only accept messages from guild members
