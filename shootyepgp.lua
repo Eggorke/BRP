@@ -300,7 +300,7 @@ function sepgp:buildMenu()
   end
   if (needInit) or (needRefresh) then
     local members = sepgp:buildRosterTable()
-    self:debugPrint(string.format(L["Scanning %d members for Points data. (%s)"],table.getn(members),(sepgp_raidonly and "Raid" or "Full")))
+    -- self:debugPrint(string.format(L["Scanning %d members for Points data. (%s)"],table.getn(members),(sepgp_raidonly and "Raid" or "Full")))
     options.args["ep"].args = sepgp:buildClassMemberTable(members,"ep")
     options.args["gp"].args = sepgp:buildClassMemberTable(members,"gp")
     if (needInit) then needInit = false end
@@ -1241,7 +1241,7 @@ sepgp.title = "Beluga Raid Points"
 sepgp.defaultMinimapPosition = 180
 sepgp.defaultPosition = "RIGHT"
 sepgp.cannotDetachTooltip = true
-sepgp.tooltipHiddenWhenEmpty = false
+sepgp.tooltipHiddenWhenEmpty = falseSetRefresh
 sepgp.independentProfile = true
 
 function sepgp:OnTooltipUpdate()
