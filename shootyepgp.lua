@@ -733,7 +733,7 @@ function sepgp:adminSay(msg)
   -- API is broken on Elysium
   -- local g_listen, g_speak, officer_listen, officer_speak, g_promote, g_demote, g_invite, g_remove, set_gmotd, set_publicnote, view_officernote, edit_officernote, set_guildinfo = GuildControlGetRankFlags() 
   -- if (officer_speak) then
-  SendChatMessage(string.format("Beluga Raid Points: %s",msg),"OFFICER")
+  SendChatMessage(string.format("Beluga Raid Points: %s",msg), sepgp_saychannel)
   -- end
 end
 
